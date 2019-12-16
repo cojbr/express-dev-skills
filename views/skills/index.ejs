@@ -7,18 +7,18 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %>!</p>
-      <% todos.forEach( (t, idx) => { %>
+      <% Skills.forEach( (t, idx) => { %>
         <li>
-          <form id="delete-form" action="/todos/<%= idx %>?_method=DELETE" method="post">
+          <form id="delete-form" action="/skills/<%= idx %>?_method=DELETE" method="post">
             <button type="submit">X</button>
           </form>
 
-          <a href="/todos/<%= idx %>"><%= t.todo %></a>
+          <a href="/skills/<%= idx %>"><%= skill.skills %></a>
         </li>
       <% }); %>
     </ul>
 
-  <a href="/todos/new">Add To-Do Item</a>
+  <a href="/skills/new">Add To-Do Item</a>
 
 
   </body>

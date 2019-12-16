@@ -1,18 +1,18 @@
 const Skills = require('../model/skill');
 
 const index = (request, response) => {
-    response.render('skillsview/index', {
+    response.render('skills/index', {
         title: 'My Super Sweet Dev Skills',
-        skills: Skills.getAllSkills()
+        skill: Skills.getAllSkills()
     });
 };
 
 const show = (request, response) => {
-    showSkill = Skills.getSkill(req.params.id);
+    showSkill = Skills.getSkill(request.params.id);
     response.render('skills/show', {
         title: Skills.skill,
-        skillNum: req.params.id,
-        skill: skill
+        skillNum: request.params.id,
+        skill: Skills.skill
     });
 }
 
@@ -22,21 +22,21 @@ const newSkill = (request, response) => {
 }
 
 const createSkill = (request, response) => {
-    let newSkill = { skill: req.body.skill, proficient: false, yearsOfPractice: 0 }
+    let newSkill = { skill: request.body.skill, proficient: false, yearsOfPractice: 0 }
     Skills.addToSkillObject(newSkill);
     response.redirect('/skills');
     console.log('List item added, redirecting to home page');
 }
 
 const deleteSkill = (request, response) => {
-    Skills.deleteSkillFromObject(req.params.id);
+    Skills.deleteSkillFromObject(request.params.id);
     response.redirect('/skills');
     console.log('list item removed, redirecting to home page');
 }
 
 const updateSkill = (request, response) => {
-    let newSkill =  { skill: req.body.skill, proficient: req.body.proficient, yearsOfPractice: req.body.yearsOfPractice }
-    Skills.updateSkillWithinObject(req.params.id, newskill)
+    let newSkill =  { skill: request.body.skill, proficient: request.body.proficient, yearsOfPractice: request.body.yearsOfPractice }
+    Skills.updateSkillWithinObject(request.params.id, newskill)
     response.redirect('skills');
     console.log('skill has been updated, redirecting to home page');
 }
@@ -44,8 +44,8 @@ const updateSkill = (request, response) => {
 const editSkill = (request, response) => {
     response.render('todos/edit', {
         title: 'Update your Skills',
-        id: req.params.id,
-        skill: Skills.getSkill(req.params.id)
+        id: request.params.id,
+        skill: Skills.getSkill(request.params.id)
     });
 }
 
