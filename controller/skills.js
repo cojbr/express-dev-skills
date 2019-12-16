@@ -1,4 +1,4 @@
-const Skills = require('../models/skill');
+const Skills = require('../model/skill');
 
 const index = (request, response) => {
     response.render('skillsview/index', {
