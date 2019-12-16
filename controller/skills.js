@@ -1,7 +1,7 @@
 const Skills = require('../model/skill');
 
 const index = (request, response) => {
-    response.render('skills/index', {
+    response.render('/index', {
         title: 'My Super Sweet Dev Skills',
         skill: Skills.getAllSkills()
     });
